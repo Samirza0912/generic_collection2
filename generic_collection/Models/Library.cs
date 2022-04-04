@@ -5,7 +5,7 @@ using generic_collection.Helper;
 
 namespace generic_collection.Models
 {
-    public class Library:Product
+    public class Library : Exceptions
     {
         /*Library class
  - BookLimit
@@ -23,13 +23,20 @@ namespace generic_collection.Models
          */
 
         public int BookLimit { get; set; }
+        public int Count { get; set; }
         List<Book> books = new List<Book>();
+        private int v;
+
+        public Library(int v)
+        {
+            this.v = v;
+        }
 
         public void AddBook(Book book)
         {
-            if (books.Count>BookLimit)
+            if (Count == BookLimit)
             {
-                throw CapacityLimitException();
+               CapacityLimitException(BookLimit,Count);
             }
             else
             {
@@ -37,10 +44,7 @@ namespace generic_collection.Models
             }
         }
 
-        private Exception CapacityLimitException()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public void GetBookById(int? Id)
         {
@@ -52,52 +56,22 @@ namespace generic_collection.Models
         {
             foreach (var item in books)
             {
-                if (item.id == id)
-                {            
+                if (item.id == Id)
+                {
                     books.Remove(item);
                     Console.WriteLine($"{item.id}; {item.Name}; {item.AuthorName}; {item.PageCount}; {item.Price}");
                     return;
                 }
+                if (Id == null)
+                {
+                    NotFoundException(Id);
+                }
             }
-            if (id == null)
-            {
-                throw  new NullReferenceException();
-            }
-            else
-            {
-                throw  NotFoundException();
-            }
-
-        }
-
-        private Exception NotFoundException()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Sell()
-        {
             
+            
+
         }
 
-        public override void ShowInfo()
-        {
-            
-        }
 
-        internal void Add()
-        {
-            
-        }
-
-        internal void GetBookById()
-        {
-            
-        }
-
-        internal void RemoveById()
-        {
-            
-        }
     }
 }

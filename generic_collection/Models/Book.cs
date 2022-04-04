@@ -22,20 +22,25 @@ ps: name, price, authorName, pageCount dəyərləri olmadan book obyekti yaratma
         public int PageCount { get; set; }
 
         List<Book> list = new List<Book>();
+        private int v1;
 
-        public Book(string authorname, int pagecount)
+        public Book(string authorname, int pagecount, string v)
         {
             AuthorName = authorname;
             PageCount = pagecount;
         }
 
+        public Book(string authorname, int pagecount, string v, int v1) : this(authorname, pagecount, v)
+        {
+            this.v1 = v1;
+        }
 
         public override void Sell()
         {
             if (Count==0)
             {
-                throw  ProductCountIsZero();
-                
+
+                ProductCountIsZero(Count);
             }
             else
             {
@@ -44,19 +49,13 @@ ps: name, price, authorName, pageCount dəyərləri olmadan book obyekti yaratma
             }
         }
 
-        private Exception ProductCountIsZero()
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public override void ShowInfo()
         {
             Console.Write($"{id}; {Name}; {AuthorName}; {Count}; {PageCount}; {Price}; {TotalIncome}");
         }
 
-        internal void Add()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

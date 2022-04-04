@@ -1,7 +1,9 @@
 ﻿using System;
+using generic_collection.Helper;
+
 namespace generic_collection.Models
 {
-    public abstract class Product
+    public abstract class Product:Exceptions
     {
         /*- Id - qıraqdan set etmək olmayacaq yalnız get etmək olacaq 
          * və hər dəfə yeni bir Book obyekt yaradıldıqda avtomatik bir vahid artacaq.

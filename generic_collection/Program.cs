@@ -8,16 +8,27 @@ namespace generic_collection
     {
         static void Main(string[] args)
         {
-            Library student = new Library();
-            Book book = new Book("Bukayo Saka", 125);
-            Book book1 = new Book("Smith Row", 666);
-            Book book2 = new Book("George Ornwell", 1234);
-            Book book3 = new Book("Lev Tolstoy", 10000);
-            book.Sell();
-            book1.Add();
-            student.ShowInfo();
-            student.GetBookById();
-            student.RemoveById();
+            Library library = new Library(80); 
+
+
+            Book book1 = new Book("Bukayo", 1234, "Saka", 23);
+            Book book2 = new Book("Emil", 321, "Smith-Rowe", 43);
+            Book book3 = new Book("Martin", 234, "Odegaard", 21);
+            Book book4 = new Book("Gabriel", 999, "Martinelli", 111);
+            
+            library.AddBook(book1);
+            library.AddBook(book2);
+            library.AddBook(book3);
+            library.AddBook(book4);
+
+            library.GetBookById(3);
+
+            library.RemoveById(1);
+
+
+            book1.Sell();
+            book2.ShowInfo();
+
         }
     }
 }
