@@ -13,14 +13,15 @@ namespace generic_collection.Models
 - ShowInfo() - abstrakt method olacaq
          */
         private static int _Id;
+        
         public int id { get; }
 
         public string Name { get; set; }
         public int Price { get; set; }
-        public int Count { get; set; }
+        public static int Count { get; set; }
         public int TotalIncome { get; set; }
 
-        public Product(int id, string name, int price, int count, int totalincome):base()
+        public Product(string name, int price, int count, int totalincome):base()
         {
             Name = name;
             Price = price;

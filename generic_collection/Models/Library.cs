@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using generic_collection.Helper;
 
 namespace generic_collection.Models
 {
-    public class Library
+    public class Library:Product
     {
         /*Library class
  - BookLimit
@@ -22,11 +23,23 @@ namespace generic_collection.Models
          */
 
         public int BookLimit { get; set; }
-        List<int> books = new List<int>();
+        List<Book> books = new List<Book>();
 
-        public void AddBook(int book)
+        public void AddBook(Book book)
         {
-            books.Add(book);
+            if (books.Count>BookLimit)
+            {
+                throw CapacityLimitException();
+            }
+            else
+            {
+                books.Add(book);
+            }
+        }
+
+        private Exception CapacityLimitException()
+        {
+            throw new NotImplementedException();
         }
 
         public void GetBookById(int? Id)
@@ -37,8 +50,54 @@ namespace generic_collection.Models
 
         public void RemoveById(int? Id)
         {
+            foreach (var item in books)
+            {
+                if (item.id == id)
+                {            
+                    books.Remove(item);
+                    Console.WriteLine($"{item.id}; {item.Name}; {item.AuthorName}; {item.PageCount}; {item.Price}");
+                    return;
+                }
+            }
+            if (id == null)
+            {
+                throw  new NullReferenceException();
+            }
+            else
+            {
+                throw  NotFoundException();
+            }
 
         }
 
+        private Exception NotFoundException()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Sell()
+        {
+            
+        }
+
+        public override void ShowInfo()
+        {
+            
+        }
+
+        internal void Add()
+        {
+            
+        }
+
+        internal void GetBookById()
+        {
+            
+        }
+
+        internal void RemoveById()
+        {
+            
+        }
     }
 }

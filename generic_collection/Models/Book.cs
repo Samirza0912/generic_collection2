@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using generic_collection.Helper;
 
 namespace generic_collection.Models
@@ -19,6 +20,8 @@ ps: name, price, authorName, pageCount dəyərləri olmadan book obyekti yaratma
 
         public string AuthorName { get; set; }
         public int PageCount { get; set; }
+
+        List<Book> list = new List<Book>();
 
         public Book(string authorname, int pagecount)
         {
@@ -49,6 +52,11 @@ ps: name, price, authorName, pageCount dəyərləri olmadan book obyekti yaratma
         public override void ShowInfo()
         {
             Console.Write($"{id}; {Name}; {AuthorName}; {Count}; {PageCount}; {Price}; {TotalIncome}");
+        }
+
+        internal void Add()
+        {
+            throw new NotImplementedException();
         }
     }
 }
